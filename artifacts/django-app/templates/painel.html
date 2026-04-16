@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border: 1px solid #ddd;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #555;
+        }
+        a {
+            color: #0066cc;
+        }
+        .menu {
+            margin-top: 20px;
+        }
+        .menu a {
+            display: block;
+            margin-bottom: 8px;
+        }
+        form {
+            display: inline;
+        }
+        button {
+            background: none;
+            border: none;
+            color: #cc0000;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 0;
+            text-decoration: underline;
+        }
+        button:hover {
+            color: #990000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Painel do Funcionário</h1>
+
+        {% if user.is_authenticated %}
+            <p>Bem-vindo ao painel, <strong>{{ user.username }}</strong>!</p>
+            <p>Você está na área restrita do sistema.</p>
+        {% endif %}
+
+        <hr>
+
+        <div class="menu">
+            <a href="/">Página Inicial</a>
+            <a href="/perfil/">Ver Meu Perfil</a>
+            <form method="post" action="/logout/">
+                {% csrf_token %}
+                <button type="submit">Sair (Logout)</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Bem-vindo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border: 1px solid #ddd;
+        }
+        h1 {
+            color: #333;
+        }
+        a {
+            color: #0066cc;
+        }
+        p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema da Empresa</h1>
+        <p>Bem-vindo ao sistema da empresa.</p>
+        <hr>
+        {% if user.is_authenticated %}
+            <p>Olá, <strong>{{ user.username }}</strong>! Você está logado.</p>
+            <p><a href="/painel/">Ir para o Painel</a></p>
+        {% else %}
+            <p>Você não está logado.</p>
+            <p><a href="/login/">Fazer Login</a></p>
+        {% endif %}
+    </div>
+</body>
+</html>

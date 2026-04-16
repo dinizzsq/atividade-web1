@@ -3,6 +3,7 @@
 ## Overview
 
 pnpm workspace monorepo using TypeScript. Each package manages its own dependencies.
+Also contains a standalone Django project for a beginner academic assignment.
 
 ## Stack
 
@@ -15,6 +16,7 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - **Validation**: Zod (`zod/v4`), `drizzle-zod`
 - **API codegen**: Orval (from OpenAPI spec)
 - **Build**: esbuild (CJS bundle)
+- **Python**: 3.11 with Django 5.x (standalone Django project)
 
 ## Key Commands
 
@@ -25,3 +27,50 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - `pnpm --filter @workspace/api-server run dev` — run API server locally
 
 See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details.
+
+## Django Project — Área Restrita de Funcionários
+
+Location: `artifacts/django-app/`
+
+### Structure
+
+```
+artifacts/django-app/
+  manage.py
+  db.sqlite3
+  projeto/
+    settings.py
+    urls.py
+    wsgi.py
+  funcionarios/
+    views.py
+    urls.py
+    admin.py
+    apps.py
+  templates/
+    home.html
+    login.html
+    painel.html
+    perfil.html
+```
+
+### Pages
+
+- `/` — Home (public)
+- `/login/` — Login page
+- `/logout/` — Logout (POST)
+- `/painel/` — Painel (protected with LoginRequiredMixin)
+- `/perfil/` — Perfil (protected with LoginRequiredMixin)
+- `/admin/` — Django admin
+
+### Pre-created Users
+
+- **admin** / admin123 (superusuário)
+- **funcionario1** / senha123
+
+### Run
+
+```bash
+cd artifacts/django-app
+python manage.py runserver 0.0.0.0:8000
+```

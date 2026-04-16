@@ -1,0 +1,177 @@
+Create a Django project for a beginner-level academic assignment.
+
+IMPORTANT (STRICT RULES):
+- Do NOT use React, TypeScript, Tailwind, Vite, APIs, or any frontend framework
+- Do NOT create a REST API
+- Use ONLY Django with HTML templates
+- The project must look simple, like it was made by a student learning Django
+- All code and interface text must be in Portuguese (Brazil)
+
+PROJECT THEME:
+Área Restrita de Funcionários
+
+GOAL:
+Build a simple system with login, logout, protected pages, and user profile using Django built-in authentication.
+
+-------------------------------------
+REQUIREMENTS (FOLLOW EXACTLY)
+-------------------------------------
+
+1. DJANGO STRUCTURE
+
+- Create a Django project
+- Create an app called "funcionarios"
+- Use default Django structure:
+  manage.py
+  project/settings.py
+  project/urls.py
+  funcionarios/views.py
+  funcionarios/urls.py
+  templates/
+
+-------------------------------------
+
+2. AUTHENTICATION (MANDATORY)
+
+Use Django built-in authentication system:
+
+- Login page (form with username and password)
+- Logout functionality
+
+IMPORTANT:
+- Use Django auth views OR implement manually using authenticate/login
+- Use {% csrf_token %} in login form
+
+-------------------------------------
+
+3. PAGES TO CREATE
+
+A) HOME (PUBLIC PAGE)
+
+- Accessible without login
+- URL: "/"
+- Show:
+  "Bem-vindo ao sistema da empresa"
+
+- If user is logged in:
+  show link to painel
+
+- If NOT logged:
+  show link to login
+
+-------------------------------------
+
+B) LOGIN PAGE
+
+- Simple form:
+  username
+  password
+- Text in Portuguese
+- Show errors if login fails
+
+-------------------------------------
+
+C) PAINEL (PROTECTED PAGE)
+
+- URL: "/painel/"
+- MUST be protected using LoginRequiredMixin
+
+- Only logged users can access
+
+- Show:
+  "Bem-vindo ao painel, {{ user.username }}"
+
+-------------------------------------
+
+D) PERFIL PAGE
+
+- URL: "/perfil/"
+- MUST be protected using LoginRequiredMixin
+
+- Use request.user to display:
+  - username
+  - email
+
+-------------------------------------
+
+4. ACCESS CONTROL (MANDATORY)
+
+- Use:
+  from django.contrib.auth.mixins import LoginRequiredMixin
+
+- Apply it in Painel and Perfil views
+
+-------------------------------------
+
+5. TEMPLATE LOGIC (MANDATORY)
+
+Use in templates:
+
+{% if user.is_authenticated %}
+  Mostrar conteúdo privado
+{% else %}
+  Mostrar botão de login
+{% endif %}
+
+-------------------------------------
+
+6. ADMIN (MANDATORY)
+
+- Enable Django admin
+- Create users manually in admin
+- These users represent funcionários
+
+-------------------------------------
+
+7. TEMPLATES (IMPORTANT)
+
+- Use simple HTML (no CSS frameworks)
+- No Tailwind, Bootstrap, or React
+- All text must be in Portuguese
+
+Example style:
+- very simple layout
+- basic forms
+- no advanced design
+
+-------------------------------------
+
+8. URL CONFIGURATION
+
+- Use clear routes:
+  / → home
+  /login/ → login
+  /logout/ → logout
+  /painel/ → painel
+  /perfil/ → perfil
+
+-------------------------------------
+
+9. DO NOT INCLUDE
+
+- "Made with Replit"
+- Demo accounts
+- Complex UI
+- API endpoints
+- JavaScript frameworks
+
+-------------------------------------
+
+10. FINAL GOAL
+
+The project must look like:
+
+- A simple academic Django project
+- Built by a beginner student
+- Easy to understand
+- Following exactly the requirements of login, logout, protected pages, and templates
+
+-------------------------------------
+
+OUTPUT:
+
+Generate:
+- views.py
+- urls.py
+- templates (home.html, login.html, painel.html, perfil.html)
+- instructions to run the project
