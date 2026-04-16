@@ -64,3 +64,13 @@ media/
 env/
 venv/
 .env
+
+# Monorepo / configurações internas
+pnpm-workspace.yaml
+pnpm-lock.yaml
+tsconfig*.json
+*.tsbuildinfo
+lib/
+scripts/
+artifacts/api-server/
+artifacts/mockup-sandbox/
