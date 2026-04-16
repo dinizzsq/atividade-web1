@@ -2,11 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
+from django.views.generic import TemplateView
 
 
-class HomeView(View):
-    def get(self, request):
-        return render(request, 'home.html')
+def home(request):
+    return render(request, 'home.html')
 
 
 class LoginView(View):
@@ -33,11 +33,9 @@ class LogoutView(View):
         return redirect('/')
 
 
-class PainelView(LoginRequiredMixin, View):
-    def get(self, request):
-        return render(request, 'painel.html')
+class PainelView(LoginRequiredMixin, TemplateView):
+    template_name = 'painel.html'
 
 
-class PerfilView(LoginRequiredMixin, View):
-    def get(self, request):
-        return render(request, 'perfil.html')
+class PerfilView(LoginRequiredMixin, TemplateView):
+    template_name = 'perfil.html'
